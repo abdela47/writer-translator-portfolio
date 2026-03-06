@@ -8,4 +8,5 @@ excerpt: "Monira Al Qadiri employs myth-making, fantasy and memory to unearth al
 tags:
   - Art
   - Culture
+featured: false
 ---

@@ -1,7 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
+import { getPublications } from "@/lib/getPublications";
 
 export default function HomePage() {
+
+   const publications = getPublications();
+
+  const featuredPublications = publications
+    .filter((publication) => publication.featured)
+    .slice(0, 3);
+
   return (
     <main className="h-full bg-neutral-100">
       {/* Container */}
@@ -88,14 +96,41 @@ export default function HomePage() {
                 Publications
               </h3>
 
-              <p className="mt-5 text-[1.1rem] leading-8 text-neutral-700">
-                Published work will live in the{" "}
-                <Link className="underline underline-offset-4" href="/publications">
-                  Publications
-                </Link>{" "}
-                section, where articles, essays, interviews, and linked pieces can be
-                browsed in one place.
-              </p>
+              <div className="mt-8 space-y-8">
+                {featuredPublications.map((publication) => (
+                  <a
+                    key={publication.slug}
+                    href={publication.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="group block"
+                  >
+                    <h4 className="text-[1.45rem] leading-snug text-neutral-900 transition-colors group-hover:text-neutral-600">
+                      {publication.title}
+                    </h4>
+
+                    <div className="mt-1 text-sm text-neutral-500">
+                      {publication.publication}
+                      {publication.date ? ` · ${publication.date}` : ""}
+                    </div>
+
+                    {publication.excerpt ? (
+                      <p className="mt-2 text-[1rem] leading-7 text-neutral-700">
+                        {publication.excerpt}
+                      </p>
+                    ) : null}
+                  </a>
+                ))}
+
+                <div className="pt-1">
+                  <Link
+                    href="/publications"
+                    className="text-sm text-neutral-600 underline underline-offset-4 hover:text-neutral-900"
+                  >
+                    View full archive
+                  </Link>
+                </div>
+              </div>
 
               <h3 className="mt-16 text-2xl leading-tight text-neutral-900">
                 Writing

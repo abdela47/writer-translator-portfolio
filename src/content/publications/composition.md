@@ -8,4 +8,5 @@ excerpt: "One of the first women artists to graduate from Khartoum's College of 
 tags:
   - Art
   - Culture
+featured: false
 ---

@@ -10,6 +10,7 @@ export type Publication = {
   url: string;
   excerpt?: string;
   tags?: string[];
+  featured?: boolean
 };
 
 const publicationsDir = path.join(
@@ -37,8 +38,9 @@ export function getPublications(): Publication[] {
     const url = String(data.url ?? "");
     const excerpt = data.excerpt ? String(data.excerpt) : undefined;
     const tags = Array.isArray(data.tags) ? data.tags.map(String) : undefined;
+    const featured = Boolean(data.featured);
 
-    return { slug, title, publication, date, url, excerpt, tags };
+    return { slug, title, publication, date, url, excerpt, tags, featured };
   });
 
   // newest first

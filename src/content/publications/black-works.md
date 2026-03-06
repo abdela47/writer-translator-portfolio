@@ -8,4 +8,5 @@ excerpt: "Black Works (2012-2013), shown in the UAE Pavilion at the 56th Venice 
 tags:
   - Art
   - Culture
+featured: false
 ---
